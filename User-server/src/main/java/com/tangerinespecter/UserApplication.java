@@ -1,12 +1,12 @@
-package com.tangerinespcter.nacos;
+package com.tangerinespecter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NacosApplication {
+public class UserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosApplication.class, args);
+        SpringApplication.run(UserApplication.class, args);
     }
 }
