@@ -1,0 +1,6 @@
+.idea/$PRODUCT_WORKSPACE_FILE$
+.idea/compiler.xml
+.idea/misc.xml
+.idea/workspace.xml
+.idea/inspectionProfiles/Project_Default.xml
+target/
