@@ -13,7 +13,7 @@ Spring Cloud Alibaba Nacos组件演示
 
 收集和维护所有服务的ip和端口
 
-#### Nacos环境搭建
+#### Nacos环境搭建部署
 
 > 下载安装：https://github.com/alibaba/nacos/releases
 
@@ -27,10 +27,12 @@ tail -f .../nacos-2.0.3/logs/start.out 查看输出日志
 
 #### 配置alibaba和nacos相关依赖
 ```xml
+<!-- nacos组件 -->
 <dependency>
     <groupId>com.alibaba.cloud</groupId>
     <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 </dependency>
+
 <dependencyManagement>
         <dependencies>
             <!-- 保证com.alibaba.cloud相关依赖都是2.2.5版本 -->
