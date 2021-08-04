@@ -4,3 +4,15 @@ spring:
       discovery:
         service: stock-sever
         server-addr: localhost:8848
+  application:
+    name: stock-server-provider
+
+dubbo:
+  application:
+    name: stock-server-provider
+    id: stock-server-provider
+  registry:
+    address: nacos://localhost:8848
+  protocol:
+    name: dubbo
+    port: 20888

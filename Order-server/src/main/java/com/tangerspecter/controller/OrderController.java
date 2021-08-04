@@ -1,5 +1,7 @@
 package com.tangerspecter.controller;
 
+import com.tangerinespecter.IStockService;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,9 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Reference
+    private IStockService stockService;
+
     @GetMapping("/order/create_v1")
     public String createOrderV1(Integer productId, Integer userId) {
         String productName = restTemplate.getForObject("http://localhost:9000/product/" + productId, String.class);
@@ -27,6 +32,13 @@ public class OrderController {
     public String createOrderV2(Integer productId, Integer userId) {
         //通过stock-sever服务名进行接口调用，可以做负载均衡
         String result = restTemplate.getForObject("http://stock-sever/stock/reduce/" + productId, String.class);
+        return result;
+    }
+
+    @GetMapping("/order/create_v3")
+    public String createOrderV3(Integer productId, Integer userId) {
+        //通过dubbo远端RPC接口调用
+        String result = stockService.reduce(productId);
         return result;
     }
 }

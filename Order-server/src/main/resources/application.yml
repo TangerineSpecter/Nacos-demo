@@ -4,3 +4,11 @@ spring:
       discovery:
         service: order-sever
         server-addr: localhost:8848
+  application:
+    name: order-server-consumer
+dubbo:
+  application:
+    name: order-server-consumer
+    id: order-server-consumer
+  registry:
+    address: nacos://localhost:8848
