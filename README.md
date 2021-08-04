@@ -19,7 +19,7 @@ Spring Cloud Alibaba Nacos组件演示
 
 - 解压缩启动Nacos
 ```xml
-sh bin/startup.sh -m standalone #standalone表示以单机的方式启动
+sh startup.sh -m standalone #standalone表示以单机的方式启动
 
 tail -f .../nacos-2.0.3/logs/start.out 查看输出日志
 ```
@@ -46,7 +46,36 @@ tail -f .../nacos-2.0.3/logs/start.out 查看输出日志
         </dependencies>
     </dependencyManagement>
 ```
+> Application上使用服务发现注解
 
+```java
+@EnableDiscoveryClient
+```
+
+> 使用负载均衡注解
+
+```java
+@LoadBalanced
+```
+之后通过服务名进行调用就会在多台服务器之间轮询
+
+> 服务对nacos地址进行配置
+
+```xml
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: order-sever #发现服务名
+        server-addr: localhost:8848 #nacos地址
+```
+
+#### 常见问题
+
+> 启动报not found使用以下指令
+```bash
+bash -f ./startup.sh -m standalone
+```
 
 
 

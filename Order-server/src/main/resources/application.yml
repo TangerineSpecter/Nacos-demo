@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: order-sever
+        server-addr: localhost:8848
