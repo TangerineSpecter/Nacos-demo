@@ -9,6 +9,10 @@ Spring Cloud Alibaba Nacos组件演示
 - 动态DNS服务
 - 服务以及元数据管理
 
+#### 与Eureka对比
+
+> Nacos使用raft协议，Nacos集群的一致性要远大于Eureka集群
+
 #### Nacos使用场景
 
 收集和维护所有服务的ip和端口
