@@ -19,7 +19,9 @@ Spring Cloud Alibaba Nacos组件演示
 
 收集和维护所有服务的ip和端口
 
-#### Nacos环境搭建部署
+## Nacos环境搭建部署
+
+#### 下载启动Nacos
 
 > 下载安装：https://github.com/alibaba/nacos/releases
 
@@ -139,6 +141,11 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yaml
+```
+
+#### 自动刷新，通过注解支持
+```java
+@RefreshScope
 ```
 
 ## 常见问题
