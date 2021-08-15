@@ -2,7 +2,9 @@
 
 Spring Cloud Alibaba Nacos组件演示
 
-#### Nacos介绍
+## Nacos介绍
+
+#### 基本功能
 
 - 服务发现和健康检测
 - 动态配置服务
@@ -73,7 +75,7 @@ spring:
         service: order-sever #发现服务名
         server-addr: localhost:8848 #nacos地址
 ```
-#### 集成dubbo
+## 集成dubbo
 
 ```xml
 <dependency>
@@ -114,12 +116,51 @@ dubbo:
     address: nacos://localhost:8848
 ```
 
-#### 常见问题
+## Nacos配置中心
+
+#### 引入配置
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+</dependencies>
+```
+#### 配置Nacos地址和项目名称
+
+```yaml
+spring:
+  application:
+    name: config-center
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+```
+
+## 常见问题
 
 > 启动报not found使用以下指令
 ```bash
 bash -f ./startup.sh -m standalone
 ```
+
+> 为什么要使用配置中心
+
+- 统一配置文件管理
+- 提供统一标准接口，服务根据标准接口自行拉取配置
+- 支持动态更新所有服务
+
+> 常见的配置中心
+
+- Appllo
+- Disconf
+- SpringCloud Config
+- Nacos
+
 
 
 
