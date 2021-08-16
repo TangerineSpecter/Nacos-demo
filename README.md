@@ -135,17 +135,30 @@ dubbo:
 ```yaml
 spring:
   application:
-    name: config-center
+    name: config-center #表示当前微服务需要想配置中心索要名叫config-center的配置
   cloud:
     nacos:
       config:
-        server-addr: localhost:8848
-        file-extension: yaml
+        server-addr: localhost:8848 #表示微服务需要找的nacos的地址
+        file-extension: yaml #表示支持的扩展文件名
+  profiles:  
+    active: prod #表示向配置中心索要生产环境的配置
 ```
 
 #### 自动刷新，通过注解支持
 ```java
 @RefreshScope
+```
+
+#### springboot配置文件规则
+
+- **优先级：** bootstrap.properties > bootstrap.yaml > application.properties > application.yaml
+- **文件格式：** ${application.name}-#{spring.profiles.active}.${file-extension}，通用配置就不需要加环境名
+
+#### 根据环境打包启动
+
+```bash
+java -jar springbootdemo.jar -Dspring.profiles.active=test (配置文件就不需要写)
 ```
 
 ## 常见问题
