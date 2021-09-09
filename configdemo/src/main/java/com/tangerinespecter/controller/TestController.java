@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @Value("${testStr}")
-    private String testStr;
+	@Value("${testStr}")
+	private String testStr;
 
-    @GetMapping("/test")
-    public String test() {
-        return testStr;
-    }
+	@Value("${testCommon}")
+	private String testCommon;
+
+	@GetMapping("/test")
+	public String test() {
+		return testCommon + ":" + testStr;
+	}
 }

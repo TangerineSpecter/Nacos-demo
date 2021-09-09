@@ -154,6 +154,7 @@ spring:
 
 - **优先级：** bootstrap.properties > bootstrap.yaml > application.properties > application.yaml
 - **文件格式：** ${application.name}-#{spring.profiles.active}.${file-extension}，通用配置就不需要加环境名
+- **同一个配置在不同环境存在：** 优先读取对应配置环境中的值，再读取公共配置的值
 
 #### 根据环境打包启动
 
