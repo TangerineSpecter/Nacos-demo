@@ -15,8 +15,13 @@ public class TestController {
 	@Value("${testCommon}")
 	private String testCommon;
 
+	@Value("${redisIp}")
+	private String redisIp;
+
 	@GetMapping("/test")
 	public String test() {
-		return testCommon + ":" + testStr;
+		return testCommon + ":" + testStr + ":" + redisIp;
 	}
+
+
 }

@@ -158,6 +158,40 @@ spring:
 
 #### 根据环境打包启动
 
+#### 多服务共享配置设置
+
+##### 方式一，通过shared-config方式
+```yaml
+spring:
+  application:
+    name: config-center
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        shared-configs[0]: #shared-configs是一个列表，多个配置，就0、1、2配置下去
+          data_id: redis.yaml #nacos建立的需要读取的公共配置data_id
+          group: DEFAULT_GROUP #可以不写，默认值为DEFAULT_GROUP
+          refresh: true #默认是false， 如果需要支持自动刷新需要配置true，搭配@RefreshScope实现动态刷新
+```
+
+##### 方式二，通过extension-configs方式
+```yaml
+spring:
+  application:
+    name: config-center
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        extension-configs[0]: #extension-configs是一个列表，多个配置，就0、1、2配置下去
+          data_id: redis.yaml #nacos建立的需要读取的公共配置data_id
+          group: DEFAULT_GROUP #可以不写，默认值为DEFAULT_GROUP
+          refresh: true #默认是false， 如果需要支持自动刷新需要配置true，搭配@RefreshScope实现动态刷新
+```
+
 ```bash
 java -jar springbootdemo.jar -Dspring.profiles.active=test (配置文件就不需要写)
 ```
