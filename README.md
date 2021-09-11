@@ -159,6 +159,9 @@ spring:
 #### 根据环境打包启动
 
 #### 多服务共享配置设置
+```bash
+java -jar springbootdemo.jar -Dspring.profiles.active=test (配置文件就不需要写)
+```
 
 ##### 方式一，通过shared-config方式
 ```yaml
@@ -192,9 +195,46 @@ spring:
           refresh: true #默认是false， 如果需要支持自动刷新需要配置true，搭配@RefreshScope实现动态刷新
 ```
 
-```bash
-java -jar springbootdemo.jar -Dspring.profiles.active=test (配置文件就不需要写)
-```
+#### 动态刷新原理
+
+##### 动态监听
+
+- push表示服务端主动将数据变更信息推送给客户端
+- pull表示客户端主动去服务端拉取数据
+
+#### 数据模型
+
+- Namespace：代表不同的环境：Dev/Test/Prod
+- Group：代表某一类配置，比如中间件配置、数据库配置
+- DataId：某个项目中具体的配置文件
+
+#### 服务分级存储模型
+
+- 服务：
+    - 健康检查开关
+    - 元数据
+    - 路由机制
+    - 保护阈值
+- 集群
+    - 健康检查模式
+    - 元数据
+    - 同步机制
+- 实例
+    - IP
+    - 端口
+    - 权重
+    - 健康状态
+    - 下线状态
+    - 元数据
+    - 响应时间
+    
+#### 服务领域模型
+
+- Namespace：实现环境隔离，默认public
+- Group：不同的service可以组成一个Group，默认Default-Group
+- Service：服务名称
+- Cluster：对指定的微服务虚拟划分，默认值Default
+- Instance：某个服务的具体实例
 
 ## 常见问题
 
